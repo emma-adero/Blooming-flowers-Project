@@ -3,6 +3,14 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $current_page = basename($_SERVER['PHP_SELF']);
+
+// Count items in cart
+$cart_count = 0;
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $qty) {
+        $cart_count += $qty;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,12 +31,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li><a href="catalogue.php" class="<?php echo $current_page == 'catalogue.php' ? 'active' : ''; ?>">Catalogue</a></li>
             <li><a href="services.php" class="<?php echo $current_page == 'services.php' ? 'active' : ''; ?>">Services</a></li>
             <li><a href="contact.php" class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>">Contact</a></li>
+            <li><a href="cart.php" class="<?php echo $current_page == 'cart.php' ? 'active' : ''; ?>">Cart (<?php echo $cart_count; ?>)</a></li>
             
             <?php if (isset($_SESSION['user_id'])): ?>
                 <?php if ($_SESSION['role'] === 'admin'): ?>
                     <li><a href="admin_dashboard.php" class="<?php echo $current_page == 'admin_dashboard.php' ? 'active' : ''; ?>">Admin Dashboard</a></li>
                 <?php else: ?>
-                    <li><a href="my_requests.php" class="<?php echo $current_page == 'my_requests.php' ? 'active' : ''; ?>">My Requests</a></li>
+                    <li><a href="my_orders.php" class="<?php echo $current_page == 'my_orders.php' ? 'active' : ''; ?>">My Orders</a></li>
                 <?php endif; ?>
                 <li><a href="logout.php" class="logout-btn">Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)</a></li>
             <?php else: ?>

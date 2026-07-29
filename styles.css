@@ -616,3 +616,21 @@ tr:hover {
 .logout-btn:hover {
     color: #a51816 !important;
 }
+
+/* Order Status Badges */
+.badge-warning {
+    background-color: #fef3c7 !important;
+    color: #d97706 !important;
+}
+.badge-info {
+    background-color: #e0f2fe !important;
+    color: #0284c7 !important;
+}
+.badge-success {
+    background-color: #dcfce7 !important;
+    color: #15803d !important;
+}
+.badge-danger {
+    background-color: #fee2e2 !important;
+    color: #b91c1c !important;
+}

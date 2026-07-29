@@ -1,92 +1,77 @@
 <?php
-$page_title = "Services - BLOMMING FLOWERS";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$page_title = "Our Services - BLOMMING FLOWERS";
 require_once 'header.php';
-
-// Check if a specific flower was passed via URL parameter
-$selected_flower = isset($_GET['flower']) ? trim($_GET['flower']) : '';
-
-// Pre-fill user data if logged in
-$user_name = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : '';
-$user_email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
 ?>
 
-<div style="position: relative; z-index: 1;">
-    <section class="services-section">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-item">
-                <div class="service-icon">🌸</div>
-                <div class="service-content">
-                    <h3>Custom Bouquets</h3>
-                    <p>Hand-tied arrangements for every occasion, crafted with seasonal blooms.</p>
-                </div>
+<div style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem; position: relative; z-index: 1;">
+    
+    <!-- Title Section -->
+    <h2 style="text-align: center; font-family: 'Papyrus', cursive; margin-top: 2rem;">Our Floral &amp; Styling Services</h2>
+    <p style="text-align: center; max-width: 700px; margin: 10px auto 30px auto; color: #555; line-height: 1.6;">
+        Beyond our online flower catalogue, we specialize in high-end designs, plant maintenance, and bespoke decoration services. Explore our specialties below.
+    </p>
+
+    <!-- Services Grid -->
+    <div style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 40px;">
+        
+        <!-- Service 1 -->
+        <div class="dashboard-card" style="margin: 0; display: flex; gap: 30px; align-items: center; flex-wrap: wrap; padding: 30px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.4);">
+            <div style="flex: 0 0 120px; width: 120px; height: 120px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                <img src="images/flower arrangement .jpg" alt="Floral Arrangement" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
-            <div class="service-item">
-                <div class="service-icon">🌿</div>
-                <div class="service-content">
-                    <h3>Plant Care &amp; Consultation</h3>
-                    <p>Expert advice and care packages to keep your plants thriving.</p>
-                </div>
-            </div>
-            <div class="service-item">
-                <div class="service-icon">🚚</div>
-                <div class="service-content">
-                    <h3>Delivery &amp; Events</h3>
-                    <p>Reliable local delivery and event floral design services.</p>
-                </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-top: 0; font-family: 'Papyrus', cursive; color: #a44b6f;">Custom Bouquets &amp; Floral Arrangements</h3>
+                <p style="color: #444; line-height: 1.7; margin-bottom: 15px;">
+                    Whether it's for an anniversary, graduation, or a simple gesture, we handcraft custom bouquets using local and seasonal blossoms. Select your color theme, wrapping papers, and flower preferences, and we will style it perfectly.
+                </p>
+                <span class="badge" style="background-color: #fce8f0; color: #a44b6f;">Handcrafted</span>
+                <span class="badge" style="background-color: #f7f5f7; color: #555;">Fresh Cut Flowers</span>
             </div>
         </div>
-    </section>
 
-    <section class="service-request-section">
-        <h2>Service Request</h2>
-        <p>Tell us what you need and we will get back to you soon.</p>
+        <!-- Service 2 -->
+        <div class="dashboard-card" style="margin: 0; display: flex; gap: 30px; align-items: center; flex-wrap: wrap; padding: 30px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.4);">
+            <div style="flex: 0 0 120px; width: 120px; height: 120px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                <img src="images/plant care .jpg" alt="Plant Care" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-top: 0; font-family: 'Papyrus', cursive; color: #2e7d32;">Plant Care &amp; Indoor Consultations</h3>
+                <p style="color: #444; line-height: 1.7; margin-bottom: 15px;">
+                    Keep your greenery thriving! We offer expert potting services, pest diagnostic advice, organic compost, and custom planter pairings. If you are decorating a home or office space, our plant specialists can perform a site assessment to match the best plants to your lighting environment.
+                </p>
+                <span class="badge" style="background-color: #e8f5e9; color: #2e7d32;">Site Assessment</span>
+                <span class="badge" style="background-color: #f7f5f7; color: #555;">Organic Fertilizers</span>
+            </div>
+        </div>
 
-        <form class="service-request-form" action="save_service_request.php" method="post">
+        <!-- Service 3 -->
+        <div class="dashboard-card" style="margin: 0; display: flex; gap: 30px; align-items: center; flex-wrap: wrap; padding: 30px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.4);">
+            <div style="flex: 0 0 120px; width: 120px; height: 120px; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                <img src="images/wedding and cooperate .jpg" alt="Weddings & Events" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-top: 0; font-family: 'Papyrus', cursive; color: #0284c7;">Weddings &amp; Corporate Event Styling</h3>
+                <p style="color: #444; line-height: 1.7; margin-bottom: 15px;">
+                    We design floral configurations for events of all scales. From sophisticated bridal party bouquets and ceremony arches to corporate lobby displays, banquets, and stage decor, we manage delivery, setup, and teardown to ensure a seamless aesthetic.
+                </p>
+                <span class="badge" style="background-color: #e0f2fe; color: #0284c7;">Custom Planning</span>
+                <span class="badge" style="background-color: #f7f5f7; color: #555;">On-site Setup &amp; Delivery</span>
+            </div>
+        </div>
 
-            <label for="customer_name">Your Name</label>
-            <input type="text" id="customer_name" name="customer_name" value="<?php echo htmlspecialchars($user_name); ?>" required>
+    </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_email); ?>" required>
-
-            <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone" required>
-
-            <label for="service">Service/Flower Needed</label>
-            <select id="service" name="service" required>
-                <option value="">Select a service or flower</option>
-                <!-- Standard Services -->
-                <option value="Custom Bouquets" <?php echo $selected_flower == 'Custom Bouquets' ? 'selected' : ''; ?>>Custom Bouquets</option>
-                <option value="Plant Care" <?php echo $selected_flower == 'Plant Care' ? 'selected' : ''; ?>>Plant Care & Consultation</option>
-                <option value="Delivery & Events" <?php echo $selected_flower == 'Delivery & Events' ? 'selected' : ''; ?>>Delivery & Events</option>
-                <option value="Wedding Flowers" <?php echo $selected_flower == 'Wedding Flowers' ? 'selected' : ''; ?>>Wedding Flowers</option>
-                
-                <!-- Specific Flower Catalogue Products -->
-                <optgroup label="Catalogue Flowers">
-                    <option value="Rose Bouquet" <?php echo $selected_flower == 'Rose Bouquet' ? 'selected' : ''; ?>>Rose Bouquet</option>
-                    <option value="Sunflower Bouquet" <?php echo $selected_flower == 'Sunflower Bouquet' ? 'selected' : ''; ?>>Sunflower Bouquet</option>
-                    <option value="Orchid Arrangement" <?php echo $selected_flower == 'Orchid Arrangement' ? 'selected' : ''; ?>>Orchid Arrangement</option>
-                    <option value="Daisy Bouquet" <?php echo $selected_flower == 'Daisy Bouquet' ? 'selected' : ''; ?>>Daisy Bouquet</option>
-                    <option value="Lily Bouquet" <?php echo $selected_flower == 'Lily Bouquet' ? 'selected' : ''; ?>>Lily Bouquet</option>
-                </optgroup>
-            </select>
-
-            <label for="delivery_date">Delivery Date</label>
-            <input type="date" id="delivery_date" name="delivery_date">
-
-            <label for="address">Delivery Address</label>
-            <textarea id="address" name="address" rows="3"></textarea>
-
-            <label for="instructions">Special Instructions</label>
-            <textarea id="instructions" name="instructions" rows="5"></textarea>
-
-            <button type="submit" class="btn-primary">
-                Submit Request
-            </button>
-
-        </form>
-    </section>
+    <!-- CTA Section -->
+    <div class="dashboard-card" style="text-align: center; padding: 35px; border-radius: 12px; background: rgba(255, 255, 255, 0.9); border: 1px solid #ddd; margin-bottom: 2rem;">
+        <h3 style="font-family: 'Papyrus', cursive; color: #a44b6f; margin-top: 0;">Interested in one of our services?</h3>
+        <p style="margin-bottom: 20px; color: #555;">Get in touch with our design team today to book a session, ask questions, or request a quotation.</p>
+        <a href="contact.php?subject=Service Inquiry" class="btn-primary" style="display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold;">
+            Inquire About Services &rarr;
+        </p>
+    </div>
 </div>
 
 <?php require_once 'footer.php'; ?>

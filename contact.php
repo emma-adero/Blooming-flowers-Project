@@ -1,5 +1,8 @@
 <?php
-$page_title = "Contact - BLOMMING FLOWERS";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$page_title = "Customer Support & Contact - BLOMMING FLOWERS";
 require_once 'header.php';
 
 // Pre-fill if logged in
@@ -7,37 +10,163 @@ $user_name = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : '';
 $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
 ?>
 
-<div style="position: relative; z-index: 1;">
-    <section class="contact-section">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2>Get in touch</h2>
-                <p>Have questions or want to place an order? Reach out to us.</p>
-                <ul>
-                    <li><strong>Address:</strong> 123 Flower Lane, Nairobi</li>
-                    <li><strong>Phone:</strong> (+254 720 154)</li>
-                    <li><strong>Email:</strong> info@blommingflowers.com</li>
-                    <li><strong>Hours:</strong> Mon - Sat: 9am - 6pm</li>
-                </ul>
+<div style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem; position: relative; z-index: 1;">
+    
+    <!-- Title Section -->
+    <h2 style="text-align: center; font-family: 'Papyrus', cursive; margin-top: 2rem;">Customer Support &amp; FAQ Hub</h2>
+    <p style="text-align: center; max-width: 600px; margin: 10px auto 30px auto; color: #555;">
+        Need help? Check out our frequently asked questions below or get in touch with our team directly.
+    </p>
+
+    <!-- Interactive FAQ Section -->
+    <div class="dashboard-card" style="margin-bottom: 40px; padding: 30px 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px);">
+        <h3 style="border-bottom: 2px solid #a44b6f; padding-bottom: 10px; margin-bottom: 20px; color: #a44b6f; font-family: 'Papyrus', cursive;">Frequently Asked Questions</h3>
+        
+        <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" style="border-bottom: 1px solid rgba(0,0,0,0.08); padding: 15px 0;">
+                <button class="faq-question" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; color: #2f2a2c; display: flex; justify-content: space-between; align-items: center; font-family: inherit;">
+                    <span>Do you offer same-day delivery?</span>
+                    <span class="faq-icon" style="font-size: 1.4rem; color: #a44b6f; font-weight: normal;">+</span>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: #555; padding-right: 20px;">
+                    <p style="margin-top: 10px; line-height: 1.6;">Yes! We offer same-day delivery in Nairobi and surrounding areas for all orders placed before 1:00 PM (EAT). Orders placed after this time will be scheduled for delivery the following day.</p>
+                </div>
             </div>
 
-            <form class="contact-form" action="save_contact.php" method="post">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_name); ?>" required>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" style="border-bottom: 1px solid rgba(0,0,0,0.08); padding: 15px 0;">
+                <button class="faq-question" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; color: #2f2a2c; display: flex; justify-content: space-between; align-items: center; font-family: inherit;">
+                    <span>Can I customize a bouquet arrangement?</span>
+                    <span class="faq-icon" style="font-size: 1.4rem; color: #a44b6f; font-weight: normal;">+</span>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: #555; padding-right: 20px;">
+                    <p style="margin-top: 10px; line-height: 1.6;">Absolutely! If you want a custom flower mixture or a specific wrapping layout, please contact us directly using the inquiry form below or give us a phone call. We'd love to tailor an arrangement just for you.</p>
+                </div>
+            </div>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_email); ?>" required>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" style="border-bottom: 1px solid rgba(0,0,0,0.08); padding: 15px 0;">
+                <button class="faq-question" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; color: #2f2a2c; display: flex; justify-content: space-between; align-items: center; font-family: inherit;">
+                    <span>How do I care for my fresh cut flowers?</span>
+                    <span class="faq-icon" style="font-size: 1.4rem; color: #a44b6f; font-weight: normal;">+</span>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: #555; padding-right: 20px;">
+                    <p style="margin-top: 10px; line-height: 1.6;">To keep your flowers blooming longer, trim the stems at a 45-degree angle under water, place them in a clean vase filled with cold water, and change the water every 2 days. Keep them away from direct sunlight, heating vents, and ripening fruit.</p>
+                </div>
+            </div>
 
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject">
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="6" required></textarea>
-
-                <button type="submit" class="btn-primary">Send Message</button>
-            </form>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" style="border-bottom: 1px solid rgba(0,0,0,0.08); padding: 15px 0;">
+                <button class="faq-question" style="background: none; border: none; font-size: 1.1rem; font-weight: bold; width: 100%; text-align: left; cursor: pointer; color: #2f2a2c; display: flex; justify-content: space-between; align-items: center; font-family: inherit;">
+                    <span>What is your cancellation and refund policy?</span>
+                    <span class="faq-icon" style="font-size: 1.4rem; color: #a44b6f; font-weight: normal;">+</span>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: #555; padding-right: 20px;">
+                    <p style="margin-top: 10px; line-height: 1.6;">Orders can be cancelled or rescheduled up to 24 hours prior to the scheduled delivery time for a full refund. Since flowers are highly perishable goods, cancellations made less than 24 hours in advance will not be refunded.</p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Contact & Message Section Grid -->
+    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+        
+        <!-- Left: Contact info card -->
+        <div style="flex: 1; min-width: 300px;">
+            <div class="dashboard-card" style="height: 100%; margin: 0; padding: 30px; border-radius: 12px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h3 style="border-bottom: 2px solid #a44b6f; padding-bottom: 10px; margin-bottom: 20px; color: #a44b6f; font-family: 'Papyrus', cursive;">Get in Touch</h3>
+                    <p style="color: #555; margin-bottom: 25px;">Have an inquiry, feedback, or a partnership suggestion? Reach out to us.</p>
+                    
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📍</span>
+                            <span><strong>Address:</strong> 123 Flower Lane, Nairobi, Kenya</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                            <span style="font-size: 1.2rem;">📞</span>
+                            <span><strong>Phone:</strong> (+254 720 154)</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                            <span style="font-size: 1.2rem;">✉️</span>
+                            <span><strong>Email:</strong> info@blommingflowers.com</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                            <span style="font-size: 1.2rem;">🕒</span>
+                            <span><strong>Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Stylized Location Map Placeholder -->
+                <div class="map-placeholder" style="margin-top: 25px; height: 180px; background: rgba(0, 0, 0, 0.04); border-radius: 8px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <div style="text-align: center; color: #555; padding: 15px; position: relative; z-index: 1;">
+                        <span style="font-size: 1.8rem;">📍</span>
+                        <h4 style="margin: 5px 0 2px 0; color: #a44b6f;">Our Location Map</h4>
+                        <small style="color: #666;">Click to view directions in Google Maps</small>
+                    </div>
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.07; background-image: radial-gradient(circle, #000 10%, transparent 11%), radial-gradient(circle, #000 10%, transparent 11%); background-size: 20px 20px; background-position: 0 0, 10px 10px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Inquiry Form Card -->
+        <div style="flex: 1.2; min-width: 300px;">
+            <div class="dashboard-card" style="margin: 0; padding: 30px; border-radius: 12px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px);">
+                <h3 style="border-bottom: 2px solid #a44b6f; padding-bottom: 10px; margin-bottom: 20px; color: #a44b6f; font-family: 'Papyrus', cursive;">Send an Inquiry</h3>
+                
+                <form class="contact-form" action="save_contact.php" method="post" style="display: flex; flex-direction: column; gap: 10px;">
+                    <label for="name" style="font-weight: bold; font-size: 0.95rem;">Name</label>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_name); ?>" required 
+                           style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+
+                    <label for="email" style="font-weight: bold; font-size: 0.95rem;">Email Address</label>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_email); ?>" required 
+                           style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+
+                    <label for="subject" style="font-weight: bold; font-size: 0.95rem;">Subject</label>
+                    <input type="text" id="subject" name="subject" required placeholder="What is this inquiry regarding?"
+                           style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+
+                    <label for="message" style="font-weight: bold; font-size: 0.95rem;">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Type your message details here..."
+                              style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
+
+                    <button type="submit" class="btn-primary" style="margin-top: 15px; padding: 12px; font-size: 1rem; border: none; cursor: pointer; border-radius: 30px;">
+                        Send Inquiry Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<!-- Interactive FAQ Script -->
+<script>
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        
+        // Toggle active class
+        if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+            answer.style.maxHeight = '0px';
+            icon.textContent = '+';
+            button.style.color = '#2f2a2c';
+        } else {
+            // Close all others
+            document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = '0px');
+            document.querySelectorAll('.faq-icon').forEach(el => el.textContent = '+');
+            document.querySelectorAll('.faq-question').forEach(btn => btn.style.color = '#2f2a2c');
+            
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            icon.textContent = '-';
+            button.style.color = '#a44b6f';
+        }
+    });
+});
+</script>
 
 <?php require_once 'footer.php'; ?>
