@@ -21,8 +21,8 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=3">
     <!-- Load centralized JavaScript files -->
-    <script src="js/navbar.js" defer></script>
-    <script src="js/validation.js" defer></script>
+    <script src="navbar.js" defer></script>
+    <script src="validation.js" defer></script>
 </head>
 <body>
 
