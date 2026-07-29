@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="login.php" class="btn-primary" style="display:inline-block; margin-top:10px; text-decoration:none; text-align:center;">Proceed to Login</a>
             </div>
         <?php else: ?>
-            <form action="register.php" method="post" class="auth-form">
+            <form action="register.php" method="post" class="auth-form" id="registerForm">
                 <label for="fullname">Full Name</label>
                 <input type="text" id="fullname" name="fullname" required>
 
@@ -84,5 +84,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
     </div>
 </section>
+
+<script>
+document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+    const fullname = document.getElementById('fullname').value.trim();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    let errors = [];
+
+    // 1. Full name validation (must have at least two words, first and last name)
+    const nameWords = fullname.split(/\s+/);
+    if (nameWords.length < 2) {
+        errors.push("Please enter your full name (both first and last name).");
+    }
+
+    // 2. Username validation (must be at least 4 characters, alphanumeric only)
+    const usernameRegex = /^[a-zA-Z0-9]{4,}$/;
+    if (!usernameRegex.test(username)) {
+        errors.push("Username must be at least 4 characters long and contain only letters and numbers.");
+    }
+
+    // 3. Password validation (must be at least 6 characters)
+    if (password.length < 6) {
+        errors.push("Password must be at least 6 characters long.");
+    }
+
+    if (errors.length > 0) {
+        e.preventDefault();
+        alert(errors.join("\n"));
+    }
+});
+</script>
 
 <?php require_once 'footer.php'; ?>

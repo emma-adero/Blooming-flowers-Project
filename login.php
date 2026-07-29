@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         <?php endif; ?>
 
-        <form action="login.php" method="post" class="auth-form">
+        <form action="login.php" method="post" class="auth-form" id="loginForm">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required autocomplete="username">
 
@@ -72,5 +72,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="auth-helper">Don't have an account? <a href="register.php">Register here</a></p>
     </div>
 </section>
+
+<script>
+document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    let errors = [];
+
+    if (username.length === 0) {
+        errors.push("Username is required.");
+    }
+
+    if (password.length < 4) {
+        errors.push("Password must be at least 4 characters long.");
+    }
+
+    if (errors.length > 0) {
+        e.preventDefault();
+        alert(errors.join("\n"));
+    }
+});
+</script>
 
 <?php require_once 'footer.php'; ?>

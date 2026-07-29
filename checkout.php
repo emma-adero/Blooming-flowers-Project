@@ -73,7 +73,7 @@ $min_delivery_date = date('Y-m-d', strtotime('+1 day')); // Must order at least 
                 <h3>Delivery Details</h3>
                 <p>Please provide the delivery details for your order.</p>
 
-                <form class="service-request-form" action="place_order.php" method="post" style="max-width: 100%; margin-top: 1.5rem;">
+                <form class="service-request-form" action="place_order.php" method="post" style="max-width: 100%; margin-top: 1.5rem;" id="checkoutForm">
                     <label for="customer_name">Recipient Name</label>
                     <input type="text" id="customer_name" name="customer_name" value="<?php echo htmlspecialchars($user_name); ?>" required>
 
@@ -130,5 +130,38 @@ $min_delivery_date = date('Y-m-d', strtotime('+1 day')); // Must order at least 
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('checkoutForm')?.addEventListener('submit', function(e) {
+    const phone = document.getElementById('phone').value.trim();
+    const dateInput = document.getElementById('delivery_date').value;
+    const address = document.getElementById('address').value.trim();
+    let errors = [];
+
+    // 1. Phone number validation (digits and + only, length 9 to 15)
+    const phoneRegex = /^[0-9+]{9,15}$/;
+    if (!phoneRegex.test(phone)) {
+        errors.push("Please enter a valid phone number (9 to 15 digits).");
+    }
+
+    // 2. Delivery Date validation (must be in the future)
+    const selectedDate = new Date(dateInput);
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    if (selectedDate <= today) {
+        errors.push("Delivery date must be a future date.");
+    }
+
+    // 3. Address validation
+    if (address.length < 10) {
+        errors.push("Please enter a detailed delivery address (minimum 10 characters).");
+    }
+
+    if (errors.length > 0) {
+        e.preventDefault();
+        alert(errors.join("\n"));
+    }
+});
+</script>
 
 <?php require_once 'footer.php'; ?>

@@ -116,7 +116,7 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
             <div class="dashboard-card" style="margin: 0; padding: 30px; border-radius: 12px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px);">
                 <h3 style="border-bottom: 2px solid #a44b6f; padding-bottom: 10px; margin-bottom: 20px; color: #a44b6f; font-family: 'Papyrus', cursive;">Send an Inquiry</h3>
                 
-                <form class="contact-form" action="save_contact.php" method="post" style="display: flex; flex-direction: column; gap: 10px;">
+                <form class="contact-form" action="save_contact.php" method="post" style="display: flex; flex-direction: column; gap: 10px;" id="contactForm">
                     <label for="name" style="font-weight: bold; font-size: 0.95rem;">Name</label>
                     <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user_name); ?>" required 
                            style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
@@ -143,20 +143,19 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
     </div>
 </div>
 
-<!-- Interactive FAQ Script -->
+<!-- Interactive FAQ & Validation Script -->
 <script>
+// 1. FAQ Accordion handler
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const answer = button.nextElementSibling;
         const icon = button.querySelector('.faq-icon');
         
-        // Toggle active class
         if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
             answer.style.maxHeight = '0px';
             icon.textContent = '+';
             button.style.color = '#2f2a2c';
         } else {
-            // Close all others
             document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = '0px');
             document.querySelectorAll('.faq-icon').forEach(el => el.textContent = '+');
             document.querySelectorAll('.faq-question').forEach(btn => btn.style.color = '#2f2a2c');
@@ -166,6 +165,30 @@ document.querySelectorAll('.faq-question').forEach(button => {
             button.style.color = '#a44b6f';
         }
     });
+});
+
+// 2. Client-side Form Validation
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+    let errors = [];
+
+    if (name.length < 2) {
+        errors.push("Name must be at least 2 characters long.");
+    }
+    if (subject.length < 4) {
+        errors.push("Subject must be at least 4 characters long.");
+    }
+    if (message.length < 15) {
+        errors.push("Message details must be at least 15 characters long.");
+    }
+
+    if (errors.length > 0) {
+        e.preventDefault();
+        alert(errors.join("\n"));
+    }
 });
 </script>
 
