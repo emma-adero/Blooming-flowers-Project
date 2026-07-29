@@ -35,17 +35,5 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             <li><a href="services.html" id="nav-services">Services</a></li>
             <li><a href="contact.html" id="nav-contact">Contact</a></li>
             <li><a href="cart.php" id="nav-cart">Cart (<?php echo $cart_count; ?>)</a></li>
-            
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <?php if ($_SESSION['role'] === 'admin'): ?>
-                    <li><a href="admin_dashboard.php" id="nav-dashboard">Admin Dashboard</a></li>
-                <?php else: ?>
-                    <li><a href="my_orders.php" id="nav-orders">My Orders</a></li>
-                <?php endif; ?>
-                <li><a href="logout.php" class="logout-btn">Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)</a></li>
-            <?php else: ?>
-                <li><a href="login.php" id="nav-login">Login</a></li>
-                <li><a href="register.php" id="nav-register">Register</a></li>
-            <?php endif; ?>
         </ul>
     </nav>
